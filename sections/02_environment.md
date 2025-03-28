@@ -12,13 +12,14 @@ Após a instalação do DBeaver, siga os passos abaixo para criar um banco de da
 
 Abra o DBeaver e clique em "File > Novo"
 
-![02_Imagem1](../images/02_environment/02_fig1.png).
-![02_Imagem2](../images/02_environment/02_fig2.png).
+![02_Imagem1](../imagens/02_environment/02_fig1.png).
+![02_Imagem2](../imagens/02_environment/02_fig2.png).
 
 
 Selecione SQLite como o tipo de banco de dados, conforme abaixo ![02_Imagem3](../imagens/02_environment/02_fig3.png).
 
 Selecione para procurar e forneça um nome e o local para o arquivo do banco de dados no diretório que você quiser, conforme abaixo.
+
 ![02_Imagem4](../imagens/02_environment/02_fig4.png).
 ![02_Imagem5](../imagens/02_environment/02_fig5.png).
 ![02_Imagem6](../imagens/02_environment/02_fig6.png).
@@ -35,6 +36,7 @@ Acesse o [dataset de vendas no Kaggle](https://www.kaggle.com/datasets/guimacrlh
 Com o arquivo zip baixado e extraído, você pode importar os arquivos CSV no DBeaver.
 
 No DBeaver, clique com o botão direito no banco de dados recém-criado e selecione a opção para Importar Dados.
+
 ![02_Imagem9](../imagens/02_environment/02_fig9.png).
 
 Siga as etapas para mapear corretamente as colunas e concluir a importação das tabelas, conforme abaixo.
@@ -49,4 +51,4 @@ Siga as etapas para mapear corretamente as colunas e concluir a importação das
 
 Esses passos devem ajudar na configuração do ambiente para a prática do seu tutorial.
 
-[<img align="center" src="../images/00_general/botao-home.png" height="25" width="25"/> Home](../README.md)
+[<img align="center" src="../imagens/00_general/botao-home.png" height="25" width="25"/> Home](../README.md)
