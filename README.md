@@ -6,4 +6,4 @@ Observação: Este repositório está em contante atualização. Volte sempre!
 # Índice
 1. [Introdução](sections/01_introduction.md)
 2. [Configurando ambiente](sections/02_environment.md)
-
+3. [Conhecendo o banco de dados](sections/03_database.md)
