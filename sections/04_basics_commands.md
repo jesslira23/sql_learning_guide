@@ -1,9 +1,12 @@
 # Comandos básicos
 
 # Índice
-[select](#select)
-[select distinct](#select-distinct)
-[where](#where)
+- [select](#select)
+- [select distinct](#select-distinct)
+- [where](#where)
+- [Operadores lógicos](#operadores-lógicos)
+- [Operadores in e like](#operadores-in-e-like)
+
 
 ---
 
@@ -195,6 +198,34 @@ where (Categoria = 'Roupas' and Cor = 'Verde') or (Tamanho = 'L');
 
 ---
 
+# Operadores IN e LIKE
 
+Descrição:
+- O operador IN permite que sejam especificados múltiplos critérios dentro do WHERE é uma alternativa reduzida ao OR. [Ref](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/in)
+- O LIKE é usado em conjunto com o WHERE para procurar por um determinado padrão em uma coluna. [Ref](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/like)
+
+O sinal de % representa zero, um ou múltiplos caracteres.
+O _ representa um único caractere
+
+- procurando por valores que estão dentro dos parênteses
+```
+select *
+from Produtos_csv
+where Cor in ('Verde','Vermelho','Laranja');
+```
+
+- procurando por valores de entrada com 'Ver' dentro da string
+```
+select *
+from Produtos_csv
+where Cor like '%Ver%';
+```
+
+- procurando por qualquer padrão com 5 caracteres na entrada
+```
+select *
+from Produtos_csv
+where Cor like '_____';
+````
 
 [<img align="center" src="../imagens/00_general/botao-home.png" height="25" width="25"/> Home](../README.md)
