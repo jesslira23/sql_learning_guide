@@ -4,16 +4,18 @@
 - [select](#select)
 - [select distinct](#select-distinct)
 - [where](#where)
+- [order by](#order-by) - TODO
 - [Operadores lógicos](#operadores-lógicos)
 - [Operadores in e like](#operadores-in-e-like)
 
+
+A seguir, alguns dos principais comandos SQL utilizados para manipulação de dados são apresentados:
 
 ---
 
 # SELECT
 
-Definição: A instrução select é usada para selecionar dados de tabelas.
-
+A instrução `select` é usada para selecionar dados de tabelas.
 
 - selecionando todas as colunas da tabela Produtos_csv:
 ```
@@ -56,8 +58,7 @@ from Produtos_csv as prod;
 
 # SELECT DISTINCT
 
-
-Descrição: Selecione todas as linhas correspondentes das referências da tabela após remover duplicatas nos resultados.
+O `SELECT DISTINCT` é usado para retornar apenas valores únicos de uma coluna, eliminando duplicatas.
 
 - selecionando registros de categoria dos produtos é única
 ```
@@ -75,7 +76,7 @@ from Produtos_csv;
 
 # WHERE
 
-Descrição: WHERE é um filtro de dados. Traz somente registros que atendam determinada condição. Para mais detalhes, [Syntax where](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-qry-select-where).
+A cláusula `WHERE` filtra os registros de acordo com uma condição específica. Para mais detalhes, [Syntax where](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-qry-select-where).
 
 
 Operadores condicionais:
@@ -86,7 +87,7 @@ Operadores condicionais:
 < 'less than'
 <= 'less than or equal to'
 <> 'not equal to'
-````
+```
 
 
 - filtrando registros onde Tamanho é 'XS'
@@ -127,38 +128,23 @@ where Categoria <> 'Calçado';
 
 ---
 
+# ORDER BY
+
+O `ORDER BY` ordena os resultados de uma consulta de forma ascendente (ASC) ou descendente (DESC).
+
+---
 
 # Operadores Lógicos
 
-Definições:
-AND:
-https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/and
+SQL permite o uso de operadores lógicos para combinar múltiplas condições na cláusula `WHERE`:
 
-select coluna1, coluna2, ...
-from nome_tabela
-where condition1 AND condition2 AND condition3 ...;
+`AND`: Ambas as condições devem ser verdadeiras.[Ref](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/and)
 
-OR:
-https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/or
+`OR`: Pelo menos uma das condições deve ser verdadeira.[Ref](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/or)
 
-select coluna1, coluna2, ...
-from nome_tabela
-where condition1 OR condition2 OR condition3 ...;
+`NOT`: Inverte a condição. [Ref](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/not)
 
-NOT:
-https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/not
-
-select coluna1, coluna2, ...
-from nome_tabela
-where NOT condition;
-
-
-BETWEEN:
-https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/between
-
-select coluna1, coluna2, ...
-from nome_da_tabela
-where column_name BETWEEN value1 AND value2;
+`BETWEEN`: Seleciona valores em um intervalo e esses valores podem ser números, textos ou datas. O BETWEEN é inclusivo ou seja, os valores dos extremos (valor inicial e valor final) também são incluídos no intervalo. [Ref](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/between)
 
 
 ## AND
@@ -200,12 +186,21 @@ where (Categoria = 'Roupas' and Cor = 'Verde') or (Tamanho = 'L');
 
 # Operadores IN e LIKE
 
-Descrição:
-- O operador IN permite que sejam especificados múltiplos critérios dentro do WHERE é uma alternativa reduzida ao OR. [Ref](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/in)
-- O LIKE é usado em conjunto com o WHERE para procurar por um determinado padrão em uma coluna. [Ref](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/like)
+- O operador `IN` permite que sejam especificados múltiplos critérios dentro do `WHERE` é uma alternativa reduzida ao OR. [Ref](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/in)
+- O `LIKE` é usado em conjunto com o `WHERE` para procurar por um determinado padrão em uma coluna. [Ref](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/like)
 
 O sinal de % representa zero, um ou múltiplos caracteres.
 O _ representa um único caractere
+
+Aplicação do **LIKE**
+| Exemplo | Definição |
+|---|---|
+| where nome_produto like 'a%' | Encontra qualquer valor que começa com 'a' |
+| where nome_produto like '%a' | Encontra qualquer valor que termina com 'a' |
+| where nome_produto like '%a%' | Encontra qualquer valor que tenha 'a'  |
+| where nome_produto like '_a%' | Encontra qualquer valor que tenha 'a' a partir do segundo caractere |
+| where nome_produto like 'a_%' | Encontra qualquer valor que comece com 'a' e tenha pelo menos 2 caracteres |
+| where nome_produto like 'a%o' | Encontra qualquer valor que comece com 'a' e termine com 'o' |
 
 - procurando por valores que estão dentro dos parênteses
 ```
@@ -227,5 +222,12 @@ select *
 from Produtos_csv
 where Cor like '_____';
 ````
+
+---
+
+# Condicional com CASE WHEN
+
+
+[ref](https://learnsql.com.br/blog/resumo-de-sql-basico/)
 
 [<img align="center" src="../imagens/00_general/botao-home.png" height="25" width="25"/> Home](../README.md)
