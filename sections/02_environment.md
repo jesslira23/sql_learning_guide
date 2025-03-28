@@ -47,8 +47,7 @@ Siga as etapas para mapear corretamente as colunas e concluir a importação das
 ![02_Imagem14](../imagens/02_environment/02_fig14.png)
 ![02_Imagem15](../imagens/02_environment/02_fig15.png)
 ![02_Imagem16](../imagens/02_environment/02_fig16.png)
-
-<img src="../imagens/02_environment/02_fig17.png" width="300" height="200" />
+![02_Imagem17](../imagens/02_environment/02_fig17.png)
 
 
 Esses passos devem ajudar na configuração do ambiente para a prática do seu tutorial.
