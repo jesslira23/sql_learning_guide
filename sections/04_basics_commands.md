@@ -5,56 +5,74 @@
 [select distinct](#select-distinct)
 [where](#where)
 
+---
 
 # SELECT
 
-/*
-A instrução select é usada para selecionar dados de tabelas.
-*/
+Definição: A instrução select é usada para selecionar dados de tabelas.
 
--- selecionando todas as colunas da tabela Produtos_csv
-select * from Produtos_csv;
 
--- aliasing nomes de colunas (a palavra-chave AS é opcional)
-select Produto_ID, Nome as nome_produto, Descrição as descricao_produto from Produtos_csv;
+- selecionando todas as colunas da tabela Produtos_csv:
+```
+select *
+from Produtos_csv;
+```
 
--- aliasing nomes de colunas sem a palavra-chave AS
-select Produto_ID, Nome nome_produto, Descrição descricao_produto from Produtos_csv;
+- aliasing nomes de colunas (a palavra-chave AS é opcional)
+```
+select Produto_ID, Nome as nome_produto, Descrição as descricao_produto
+from Produtos_csv;
+```
 
--- use acentos graves para especificar aliases de coluna com caracteres de espaço em branco
-select Produto_ID as `ID do 	produto`, Nome as `Nome do produto`, Descrição as `Descrição do produto` from Produtos_csv;
+- aliasing nomes de colunas sem a palavra-chave AS
+```
+select Produto_ID, Nome nome_produto, Descrição descricao_produto
+from Produtos_csv;
+```
 
--- aliasing Table names (AS palavra-chave opcional)
+- use acentos graves para especificar aliases de coluna com caracteres de espaço em branco
+```
+select Produto_ID as `ID do 	produto`, Nome as `Nome do produto`, Descrição as `Descrição do produto`
+from Produtos_csv;
+```
+
+- aliasing Table names (AS palavra-chave opcional)
+```
 select prod.Produto_ID, prod.Nome, prod.Descrição from Produtos_csv as prod;
+```
 
--- usando o alias Table name como um prefixo do star
-select prod.* from Produtos_csv as prod;
+- usando o alias Table name como um prefixo do star
+```
+select prod.*
+from Produtos_csv as prod;
+```
 
 
 
-
-_______________________________________________________________________________________
+---
 
 # SELECT DISTINCT
 
 
-/*
-select DISTINCT: Selecione todas as linhas correspondentes das referências da tabela após remover duplicatas nos resultados.
-*/
+Descrição: Selecione todas as linhas correspondentes das referências da tabela após remover duplicatas nos resultados.
 
--- selecionando registros de categoria dos produtos é única
-select distinct Categoria from Produtos_csv;
+- selecionando registros de categoria dos produtos é única
+```
+select distinct Categoria
+from Produtos_csv;
+```
 
--- selecionando registros onde os valores em todas as colunas são únicos
-select distinct * from Produtos_csv;
+- selecionando registros onde os valores em todas as colunas são únicos
+```
+select distinct *
+from Produtos_csv;
+```
 
-_______________________________________________________________________________________
+---
 
-# where
+# WHERE
 
-
-/*
-Cláusula where: https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-qry-select-where
+Descrição: WHERE é um filtro de dados. Traz somente registros que atendam determinada condição. Para mais detalhes, [Syntax where](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-qry-select-where).
 
 Sintaxe:
 select column[s] from Table
@@ -68,31 +86,49 @@ Operadores condicionais:
 <= 'less than or equal to'
 <> 'not equal to'
 
-*/
 
--- filtrando registros onde Tamanho é 'XS'
-select * from Produtos_csv where Tamanho = 'XS';
+- filtrando registros onde Tamanho é 'XS'
+```
+select *
+from Produtos_csv
+where Tamanho = 'XS';
+```
 
--- selecionando registros com base em uma coluna de registro de data e hora
--- valores de data/registro de data e hora devem ser colocados entre aspas
-select * from Pedidos_Compra_csv where `Data do Pedido` = '2016-01-13 23:20:30';
+- selecionando registros com base em uma coluna de registro de data e hora
+- valores de data/registro de data e hora devem ser colocados entre aspas
+```
+select *
+from Pedidos_Compra_csv
+where `Data do Pedido` = '2016-01-13 23:20:30';
+```
 
--- valores numéricos não precisam estar entre aspas
-select * from Produtos_csv where Preço = 71.3;
+- valores numéricos não precisam estar entre aspas
+```
+select *
+from Produtos_csv
+where Preço = 71.3;
+```
 
--- usando o operador maior ou igual na condição
-select * from Pedidos_Compra_csv where `Data do Pedido` >= '2016-01-13 23:20:30';
+- usando o operador maior ou igual na condição
+```
+select *
+from Pedidos_Compra_csv
+where `Data do Pedido` >= '2016-01-13 23:20:30';
+```
 
--- usando o operador diferente de
-select * from Produtos_csv where Categoria <> 'Calçado';
+- usando o operador diferente de
+```
+select *
+from Produtos_csv
+where Categoria <> 'Calçado';
+```
 
+---
 
-_______________________________________________________________________________________
 
 # Operadores Lógicos
 
-
-/*
+Definições:
 AND:
 https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/and
 
@@ -122,30 +158,36 @@ select coluna1, coluna2, ...
 from nome_da_tabela
 where column_name BETWEEN value1 AND value2;
 
-*/
 
--- AND
+## AND
+```
 select *
 from Produtos_csv
 where Categoria = 'Roupas' and Cor = 'Verde';
+```
 
-
--- OR
+## OR
+```
 select *
 from Produtos_csv
 where Categoria = 'Roupas' or Cor = 'Verde';
+```
 
--- NOT
+## NOT
+```
 select *
 from Produtos_csv
 where not Categoria = 'Roupas';
+```
 
--- BETWEEN
+## BETWEEN
+```
 select *
 from Produtos_csv
 where Tamanho between 34 and 37;
+```
 
--- ao usar várias condições e condições aninhadas, use parênteses, os parênteses têm precedência sobre outras condições
+> Observação: ao usar várias condições e condições aninhadas, use parênteses, os parênteses têm precedência sobre outras condições
 ```
 select *
 from Produtos_csv
@@ -153,7 +195,7 @@ where (Categoria = 'Roupas' and Cor = 'Verde') or (Tamanho = 'L');
 ```
 
 ---
-ß
+
 
 
 [<img align="center" src="../imagens/00_general/botao-home.png" height="25" width="25"/> Home](../README.md)
