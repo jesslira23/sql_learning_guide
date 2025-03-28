@@ -74,17 +74,16 @@ from Produtos_csv;
 
 Descrição: WHERE é um filtro de dados. Traz somente registros que atendam determinada condição. Para mais detalhes, [Syntax where](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-qry-select-where).
 
-Sintaxe:
-select column[s] from Table
-where condition[s];
 
 Operadores condicionais:
+```
 = 'equal to'
 > 'greater than'
 >= 'geater than or equal to'
 < 'less than'
 <= 'less than or equal to'
 <> 'not equal to'
+````
 
 
 - filtrando registros onde Tamanho é 'XS'
